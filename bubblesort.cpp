@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 void printArray(int arr[],int n){
@@ -11,37 +10,27 @@ void printArray(int arr[],int n){
 }
 
 void bubbleSort(int arr[], int n) {
-    int count = 0;
-    for(int i=0; i<n;i++){
-        for(int k=0;k<n;k++){
-            if(arr[k]>arr[k+1]){
-                count = count + 1;
-                int temp = arr[k];
-                arr[k] = arr[k + 1];
-                arr[k + 1] = temp;
-                cout<<"Swapped "<<arr[k]<<" "<<arr[k+1]<<endl;
-        }
-        
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
         }
     }
-    cout<<"Swap Counter: "<<count<<endl;
 }
-
 
 int main(){
     int n;
     int arr[100];
-    time_t start, end;
     cout<<"Enter total number of elements: ";
     cin>>n;
     cout<<"Enter array elements"<<endl;
     for(int i=0; i<n; i++){
         cin>>arr[i];
     }
-    
     bubbleSort(arr, n);
-    
+    cout << "Array sorted using Bubble Sort:" << endl;
     printArray(arr, n);
-
-    return 0;
 }
